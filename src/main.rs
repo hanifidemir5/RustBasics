@@ -1,10 +1,15 @@
 mod enums;
 mod structs;
 mod optionAndResult;
+mod hashmaps;
+mod vectors;
+mod strings;
 
+use crate::strings::strings;
+use crate::vectors::vectors;
 use crate::structs::{concatenate_strings, get_book_data, Book, TupleBook, UnitBook,create_book,Rectangle};
 use crate::enums::{Weather, Message,process_message, Animal};
-
+use crate::hashmaps::hashmaps;
 use crate::optionAndResult::{find_square_root,divide, get_from_database, calculate_triangle_area};
 
 fn main(){
@@ -105,5 +110,9 @@ fn main(){
         Ok(area) => println!("Area of the triangle is {} square units", area),
         Err(error_message) => println!("Error: {}", error_message)
     }
+
+    hashmaps();
+    vectors();
+    strings();
 
 }
