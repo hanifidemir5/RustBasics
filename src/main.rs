@@ -1,7 +1,12 @@
 mod enums;
 mod structs;
+mod optionAndResult;
+
 use crate::structs::{concatenate_strings, get_book_data, Book, TupleBook, UnitBook,create_book,Rectangle};
 use crate::enums::{Weather, Message,process_message, Animal};
+
+use crate::optionAndResult::{find_square_root,divide, get_from_database, calculate_triangle_area};
+
 fn main(){
     let string1 = String::from("hello");
     let string2 = String::from(" world\n");
@@ -73,5 +78,32 @@ fn main(){
     }
     
     let msg = Message::Write(String::from("Melo is sleeping"));
-    msg.call()
+    msg.call();
+
+    let number = -4.0;
+    let square_root = find_square_root(number);
+
+    match square_root {
+        Some(value) => println!("The square root of {} is {}", number, value),
+        None => println!("The square root of {} is not a real number",number),
+    }
+
+    let a = 10.0;
+    let b = 0.0;
+    let division_result = divide(a, b);
+
+    match  division_result {
+        Ok(value) => println!("{} divided by {} is  {}",a,b,value),
+        Err(error_message) => println!("Error {}", error_message),
+    }
+
+    let base = get_from_database("base");
+    let height = get_from_database("height");
+    let area_result = calculate_triangle_area(base, height);
+
+    match area_result {
+        Ok(area) => println!("Area of the triangle is {} square units", area),
+        Err(error_message) => println!("Error: {}", error_message)
+    }
+
 }
