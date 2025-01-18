@@ -1,5 +1,7 @@
-use std::os::unix::net::UnixDatagram;
-
+mod enums;
+mod structs;
+use crate::structs::{concatenate_strings, get_book_data, Book, TupleBook, UnitBook,create_book,Rectangle};
+use crate::enums::{Weather, Message,process_message, Animal};
 fn main(){
     let string1 = String::from("hello");
     let string2 = String::from(" world\n");
@@ -46,8 +48,6 @@ fn main(){
 
     println!("Title: {}, Author: {}, Publication Year: {}", title, author, publication_year);
 
-    let unit_book = UnitBook;
-
     let my_rectangle = Rectangle{
         width: 10.0,
         height: 5.0,
@@ -57,51 +57,21 @@ fn main(){
 
     println!("The area of the rectangle is {}", area);
 
-}
+    let current_weather = Weather::Snowy;
 
-fn concatenate_strings(s1: &String, s2: &String) -> String {
-    let mut result = String::new();
-    result.push_str(s1);
-    result.push_str(s2);
-    return result;
-}
+    let msg = Message::Write(String::from("Hello Rust"));
 
-#[derive(Debug)]
-struct Book {
-    title: String,
-    author: String,
-    publication_year: u32,
-}
+    process_message(msg);
 
-struct  TupleBook(String, String, u32);
+    let my_pet = Animal::Cat("Melo".to_string());
 
-struct UnitBook;
-fn get_book_data(book:Book) -> [String; 3]{
-    let title = book.title;
-    let author = book.author;
-    let publication_year = book.publication_year;
-
-    let data: [String; 3] = [title, author, publication_year.to_string()];
-    data
-}
-
-fn create_book(title: String, author: String, publication_year: u32) -> Book{
-    let book = Book{
-        title,
-        author,
-        publication_year,
-    };
-
-    return book
-}
-
-struct Rectangle{
-    width: f64,
-    height: f64,
-}
-
-impl Rectangle{
-    fn area(&self) -> f64{
-        self.width * self.height
+    if let Animal::Cat(name) = my_pet{
+        println!("My cat name is {}", name);
     }
+    else{
+        println!("My animal is not a cat");
+    }
+    
+    let msg = Message::Write(String::from("Melo is sleeping"));
+    msg.call()
 }
