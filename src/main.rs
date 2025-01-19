@@ -8,8 +8,12 @@ mod iterators;
 mod usage_of_iterators;
 mod closures;
 mod modules_and_visibility;
+mod custom_filter;
+mod traits;
 use std::io;
 
+use crate::traits::traits;
+use crate::custom_filter::custom_filter_file;
 use crate::modules_and_visibility::modules_and_visibility;
 use crate::closures::closures;
 use crate::usage_of_iterators::usage_of_iterators;
@@ -172,4 +176,6 @@ fn main(){
     usage_of_iterators();
     closures();
     modules_and_visibility();
+    custom_filter_file();
+    traits();
 }
