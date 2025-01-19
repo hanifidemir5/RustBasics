@@ -10,8 +10,10 @@ mod closures;
 mod modules_and_visibility;
 mod custom_filter;
 mod traits;
+mod trait_objects;
 use std::io;
 
+use crate::trait_objects::trait_objects;
 use crate::traits::traits;
 use crate::custom_filter::custom_filter_file;
 use crate::modules_and_visibility::modules_and_visibility;
@@ -178,4 +180,5 @@ fn main(){
     modules_and_visibility();
     custom_filter_file();
     traits();
+    trait_objects();
 }
