@@ -20,9 +20,9 @@ pub fn iterators (){
         *item *= 2;
         println!("{}", item);
     }
-
+    
     for item in vec.into_iter(){
         println!("{}", item)
     }
-
 }
+

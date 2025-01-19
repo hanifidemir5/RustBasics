@@ -5,8 +5,12 @@ mod hashmaps;
 mod vectors;
 mod strings;
 mod iterators;
+mod usage_of_iterators;
+mod closures;
 use std::io;
 
+use crate::closures::closures;
+use crate::usage_of_iterators::usage_of_iterators;
 use crate::iterators::{Fibonacci, iterators};
 use crate::strings::strings;
 use crate::vectors::vectors;
@@ -162,6 +166,7 @@ fn main(){
         println!("{}", fibonacci.next().unwrap())
     }
 
-    iterators()
-
+    iterators();
+    usage_of_iterators();
+    closures();
 }
