@@ -13,7 +13,9 @@ pub fn trait_objects(){
 
     for speaker in speakers{
         speaker.sing();
+        invite_to_animal_the_voice(speaker);
     }
+
 }
 
 trait MakeNoise {
@@ -32,13 +34,15 @@ struct Dog{
 
 impl MakeNoise for Dog{
     fn sing(&self) {
-        println!("bark bark");
+        println!("Name: {}, Breed:{}", self.name, self.breed);
+        println!("Song: Bingo");
     }
 }
 
 impl MakeNoise for Bird{
     fn sing(&self) {
-        println!("birb sings diamonds.");
+        println!("Name: {}, Color:{}", self.name, self.color);
+        println!("Song: Diamonds");
     }
 }
 

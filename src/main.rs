@@ -11,8 +11,10 @@ mod modules_and_visibility;
 mod custom_filter;
 mod traits;
 mod trait_objects;
+mod introduction_to_generics;
 use std::io;
 
+use crate::introduction_to_generics::introduction_to_generics;
 use crate::trait_objects::trait_objects;
 use crate::traits::traits;
 use crate::custom_filter::custom_filter_file;
@@ -181,4 +183,5 @@ fn main(){
     custom_filter_file();
     traits();
     trait_objects();
+    introduction_to_generics();
 }

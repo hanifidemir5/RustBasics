@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 pub fn closures() {
     let my_closure = || println!("Defining closures");
 

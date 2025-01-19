@@ -1,5 +1,3 @@
-use std::result;
-
 pub enum Weather{
     Sunny,
     Cloudy,

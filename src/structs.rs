@@ -14,7 +14,6 @@ pub struct Book {
 
 pub struct  TupleBook(pub String, pub String,pub u32);
 
-pub struct UnitBook;
 pub fn get_book_data(book:Book) -> [String; 3]{
     let title = book.title;
     let author = book.author;
