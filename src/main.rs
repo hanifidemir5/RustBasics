@@ -1,16 +1,19 @@
 mod enums;
 mod structs;
-mod optionAndResult;
+mod option_and_result;
 mod hashmaps;
 mod vectors;
 mod strings;
+mod iterators;
+use std::io;
 
+use crate::iterators::{Fibonacci, iterators};
 use crate::strings::strings;
 use crate::vectors::vectors;
-use crate::structs::{concatenate_strings, get_book_data, Book, TupleBook, UnitBook,create_book,Rectangle};
-use crate::enums::{Weather, Message,process_message, Animal};
+use crate::structs::{concatenate_strings, get_book_data, Book, TupleBook,create_book,Rectangle};
+use crate::enums::{ Message,process_message, Animal, calculate, Operation};
 use crate::hashmaps::hashmaps;
-use crate::optionAndResult::{find_square_root,divide, get_from_database, calculate_triangle_area};
+use crate::option_and_result::{find_square_root,divide, get_from_database, calculate_triangle_area};
 
 fn main(){
     let string1 = String::from("hello");
@@ -67,7 +70,7 @@ fn main(){
 
     println!("The area of the rectangle is {}", area);
 
-    let current_weather = Weather::Snowy;
+    // let current_weather = Weather::Snowy;
 
     let msg = Message::Write(String::from("Hello Rust"));
 
@@ -114,5 +117,51 @@ fn main(){
     hashmaps();
     vectors();
     strings();
+
+    let mut input = String::new();
+    println!("Please enter the first number:");
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    let num1: f64 = input.trim().parse().expect("Please enter a valid number");
+
+    // Clear the input buffer
+    input.clear();
+
+    // Reading the second number
+    println!("Please enter an operation Add, Subtract, Multiply or Divide");
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    let operation = input.trim().to_string();
+    // Clear the input buffer
+    input.clear();
+
+    // Reading the operation
+    println!("Please enter the second number:");
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    let num2: f64 = input.trim().parse().expect("Please enter a valid number");
+
+    let operation_enum = match operation.as_str() {
+        "Add" | "add" => Some(Operation::Add { a: num1, b: num2 }),
+        "Subtract" | "subtract" => Some(Operation::Subtract { a: num1, b: num2 }),
+        "Multiply" | "multiply" => Some(Operation::Multiply { a: num1, b: num2 }),
+        "Divide" | "divide"=> Some(Operation::Divide { a: num1, b: num2 }),
+        _ => None,
+    };
+
+    if let Some(op) = operation_enum{
+        let result = calculate(op);
+        println!("result:{:?}", result);
+    }
+    else {
+        println!("invalid operation")
+    }
+    
+    input.clear();
+
+    let mut fibonacci = Fibonacci {current:0 , next:1};
+
+    for _ in 0..10 {
+        println!("{}", fibonacci.next().unwrap())
+    }
+
+    iterators()
 
 }

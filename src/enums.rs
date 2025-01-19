@@ -1,3 +1,5 @@
+use std::result;
+
 pub enum Weather{
     Sunny,
     Cloudy,
@@ -38,10 +40,27 @@ pub fn process_message(msg:Message){
 impl Message {
     pub fn call(&self){
         match self{
-            Message:: Quit => println!("Quit"),
+            Message::Quit => println!("Quit"),
             Message::Move { x, y } => println!("Move to x:{}, y:{}", x,y),
-            Message:: Write(s) => println!("Write: {}",s),
+            Message::Write(s) => println!("Write: {}",s),
             Message::ChangeColor(r,g,b) => println!("Change color to red:{}, green:{}, blue:{}",r,g,b),
         }
     }
+}
+
+pub enum Operation {
+    Add{a: f64,b:f64},
+    Subtract{a: f64,b:f64},
+    Multiply{a: f64,b:f64},
+    Divide{a: f64,b:f64},
+}
+
+pub fn calculate (operation:Operation) -> f64 {
+    let result = match operation {
+        Operation::Add { a, b } => a + b,
+        Operation::Subtract { a, b } => a - b,
+        Operation::Multiply { a, b } => a * b,
+        Operation::Divide { a, b } => a / b,
+    };
+    result
 }
