@@ -7,8 +7,10 @@ mod strings;
 mod iterators;
 mod usage_of_iterators;
 mod closures;
+mod modules_and_visibility;
 use std::io;
 
+use crate::modules_and_visibility::modules_and_visibility;
 use crate::closures::closures;
 use crate::usage_of_iterators::usage_of_iterators;
 use crate::iterators::{Fibonacci, iterators};
@@ -169,4 +171,5 @@ fn main(){
     iterators();
     usage_of_iterators();
     closures();
+    modules_and_visibility();
 }
