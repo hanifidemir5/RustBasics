@@ -12,8 +12,10 @@ mod custom_filter;
 mod traits;
 mod trait_objects;
 mod introduction_to_generics;
+mod implementation_of_generics;
 use std::io;
 
+use crate::implementation_of_generics::implementations_of_generics;
 use crate::introduction_to_generics::introduction_to_generics;
 use crate::trait_objects::trait_objects;
 use crate::traits::traits;
@@ -184,4 +186,5 @@ fn main(){
     traits();
     trait_objects();
     introduction_to_generics();
+    implementations_of_generics();
 }
