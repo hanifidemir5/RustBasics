@@ -14,8 +14,12 @@ mod trait_objects;
 mod introduction_to_generics;
 mod implementation_of_generics;
 mod lifetimes;
+mod traits_and_generics_homework;
+mod panic;
 use std::io;
 
+use crate::panic::panic;
+use crate::traits_and_generics_homework::traits_and_generics_homework;
 use crate::lifetimes::lifetimes;
 use crate::implementation_of_generics::implementations_of_generics;
 use crate::introduction_to_generics::introduction_to_generics;
@@ -190,4 +194,6 @@ fn main(){
     introduction_to_generics();
     implementations_of_generics();
     lifetimes();
+    traits_and_generics_homework();
+    panic();
 }
