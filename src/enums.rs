@@ -45,20 +45,3 @@ impl Message {
         }
     }
 }
-
-pub enum Operation {
-    Add{a: f64,b:f64},
-    Subtract{a: f64,b:f64},
-    Multiply{a: f64,b:f64},
-    Divide{a: f64,b:f64},
-}
-
-pub fn calculate (operation:Operation) -> f64 {
-    let result = match operation {
-        Operation::Add { a, b } => a + b,
-        Operation::Subtract { a, b } => a - b,
-        Operation::Multiply { a, b } => a * b,
-        Operation::Divide { a, b } => a / b,
-    };
-    result
-}

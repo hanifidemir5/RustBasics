@@ -1,4 +1,4 @@
-pub fn implementations_of_generics(){
+pub fn implementations_of_generics_homework(){
     let int_container = Container{value:42};
     let str_container = Container {value:"Simon"};
 

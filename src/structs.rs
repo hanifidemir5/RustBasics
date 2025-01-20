@@ -1,10 +1,3 @@
-pub fn concatenate_strings(s1: &String, s2: &String) -> String {
-    let mut result = String::new();
-    result.push_str(s1);
-    result.push_str(s2);
-    return result;
-}
-
 #[derive(Debug)]
 pub struct Book {
     pub title: String,

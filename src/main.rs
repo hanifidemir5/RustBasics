@@ -8,45 +8,45 @@ mod iterators;
 mod usage_of_iterators;
 mod closures;
 mod modules_and_visibility;
-mod custom_filter;
 mod traits;
 mod trait_objects;
 mod introduction_to_generics;
-mod implementation_of_generics;
 mod lifetimes;
-mod traits_and_generics_homework;
 mod panic;
 mod introduction_to_error_handling;
 mod cutom_error;
-use std::io;
+mod homeworks{
+    pub mod traits_and_generics_homework;
+    pub mod implementations_of_generics_homework;
+    pub mod enums_homework;
+    pub mod custom_filter;
+    pub mod concatenate_strings_homework;
+}
 
+use crate::homeworks::concatenate_strings_homework::concatenate_strings_homework;
+use crate::homeworks::enums_homework::enums_homework;
 use crate::cutom_error::custom_error;
 use crate::introduction_to_error_handling::introduction_to_error_handling;
 // use crate::panic::panic;
-use crate::traits_and_generics_homework::traits_and_generics_homework;
+use crate::homeworks::traits_and_generics_homework::traits_and_generics_homework;
 use crate::lifetimes::lifetimes;
-use crate::implementation_of_generics::implementations_of_generics;
+use crate::homeworks::implementations_of_generics_homework::implementations_of_generics_homework;
 use crate::introduction_to_generics::introduction_to_generics;
 use crate::trait_objects::trait_objects;
 use crate::traits::traits;
-use crate::custom_filter::custom_filter_file;
+use crate::homeworks::custom_filter::custom_filter_file;
 use crate::modules_and_visibility::modules_and_visibility;
 use crate::closures::closures;
 use crate::usage_of_iterators::usage_of_iterators;
 use crate::iterators::{Fibonacci, iterators};
 use crate::strings::strings;
 use crate::vectors::vectors;
-use crate::structs::{concatenate_strings, get_book_data, Book, TupleBook,create_book,Rectangle};
-use crate::enums::{ Message,process_message, Animal, calculate, Operation};
+use crate::structs::{get_book_data, Book, TupleBook,create_book,Rectangle};
+use crate::enums::{ Message,process_message, Animal};
 use crate::hashmaps::hashmaps;
 use crate::option_and_result::{find_square_root,divide, get_from_database, calculate_triangle_area};
 
 fn main(){
-    let string1 = String::from("hello");
-    let string2 = String::from(" world\n");
-
-    let concatenated_string = concatenate_strings(&string1, &string2);
-    println!("{}", concatenated_string);
 
     let book = Book{
         title: String::from("The Way of Zen"),
@@ -140,54 +140,17 @@ fn main(){
         Err(error_message) => println!("Error: {}", error_message)
     }
 
-    hashmaps();
-    vectors();
-    strings();
-
-    let mut input = String::new();
-    println!("Please enter the first number:");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
-    let num1: f64 = input.trim().parse().expect("Please enter a valid number");
-
-    // Clear the input buffer
-    input.clear();
-
-    // Reading the second number
-    println!("Please enter an operation Add, Subtract, Multiply or Divide");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
-    let operation = input.trim().to_string();
-    // Clear the input buffer
-    input.clear();
-
-    // Reading the operation
-    println!("Please enter the second number:");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
-    let num2: f64 = input.trim().parse().expect("Please enter a valid number");
-
-    let operation_enum = match operation.as_str() {
-        "Add" | "add" => Some(Operation::Add { a: num1, b: num2 }),
-        "Subtract" | "subtract" => Some(Operation::Subtract { a: num1, b: num2 }),
-        "Multiply" | "multiply" => Some(Operation::Multiply { a: num1, b: num2 }),
-        "Divide" | "divide"=> Some(Operation::Divide { a: num1, b: num2 }),
-        _ => None,
-    };
-
-    if let Some(op) = operation_enum{
-        let result = calculate(op);
-        println!("result:{:?}", result);
-    }
-    else {
-        println!("invalid operation")
-    }
-    
-    input.clear();
-
     let mut fibonacci = Fibonacci {current:0 , next:1};
 
     for _ in 0..10 {
         println!("{}", fibonacci.next().unwrap())
     }
 
+    concatenate_strings_homework();
+    hashmaps();
+    vectors();
+    strings();
+    enums_homework();
     iterators();
     usage_of_iterators();
     closures();
@@ -196,7 +159,7 @@ fn main(){
     traits();
     trait_objects();
     introduction_to_generics();
-    implementations_of_generics();
+    implementations_of_generics_homework();
     lifetimes();
     traits_and_generics_homework();
     // panic();
