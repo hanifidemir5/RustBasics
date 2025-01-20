@@ -16,8 +16,10 @@ mod implementation_of_generics;
 mod lifetimes;
 mod traits_and_generics_homework;
 mod panic;
+mod introduction_to_error_handling;
 use std::io;
 
+use crate::introduction_to_error_handling::introduction_to_error_handling;
 use crate::panic::panic;
 use crate::traits_and_generics_homework::traits_and_generics_homework;
 use crate::lifetimes::lifetimes;
@@ -195,5 +197,6 @@ fn main(){
     implementations_of_generics();
     lifetimes();
     traits_and_generics_homework();
-    panic();
+    // panic();
+    introduction_to_error_handling();
 }
