@@ -17,10 +17,12 @@ mod lifetimes;
 mod traits_and_generics_homework;
 mod panic;
 mod introduction_to_error_handling;
+mod cutom_error;
 use std::io;
 
+use crate::cutom_error::custom_error;
 use crate::introduction_to_error_handling::introduction_to_error_handling;
-use crate::panic::panic;
+// use crate::panic::panic;
 use crate::traits_and_generics_homework::traits_and_generics_homework;
 use crate::lifetimes::lifetimes;
 use crate::implementation_of_generics::implementations_of_generics;
@@ -199,4 +201,6 @@ fn main(){
     traits_and_generics_homework();
     // panic();
     introduction_to_error_handling();
+    custom_error();
+
 }
